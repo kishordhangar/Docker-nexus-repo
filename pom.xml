@@ -28,14 +28,34 @@
         </dependency>
     </dependencies>
 
-    <build>
-    	<finalName>docker-java-app-example</finalName>
+<build>
+        <finalName>docker-java-app-example</finalName>
         <plugins>
+            <!-- ... your existing plugins ... -->
+
+            <!-- Docker Maven Plugin -->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.36.0</version> <!-- Use the latest version -->
+                <configuration>
+                    <images>
+                        <image>
+                            <name>jenkins-image:${project.version}</name>
+                            <build>
+                                <from>openjdk:8-jdk-alpine</from> <!-- Base image -->
+                                <tags>
+                                    <tag>${project.version}</tag>
+                                    <tag>latest</tag>
+                                </tags>
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
