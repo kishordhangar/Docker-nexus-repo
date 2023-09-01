@@ -61,11 +61,11 @@
      <distributionManagement>
         <snapshotRepository>
             <id>nexus</id>
-            <url>http://192.168.1.14:8081/repository/kishor-docker/</url>
+            <url>http://192.168.244.251:8081/repository/docker-nexus//</url>
         </snapshotRepository>
         <repository>
             <id>nexus</id>
-            <url>http://192.168.1.14:8081/repository/kishor-docker/</url>
+            <url>http://192.168.244.251:8081/repository/docker-nexus//</url>
         </repository>
     </distributionManagement>
 </project>
